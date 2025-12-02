@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}Portfolio - Sulfur Tattoo{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center mb-5">
+            <h1 class="display-4 mb3"><strong>Electric Tattoos</strong></h1>
+            <p class="lead">Browse through my collection of custom tattoos</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Loop through each tattoo picture in database -->
+        {% for tattoo in tattoos %}
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="text-center">
+                <img src="{{ url_for('static', filename='images/' + tattoo.filename) }}" 
+                    alt="Tattoo"
+                    class="img-fluid mb-2 portfolio-img clickable-image"
+                    data-image-url="{{ url_for('static', filename='images/' + tattoo.filename) }}"
+                    style="height: 250px; width: 100%; object-fit: cover; cursor: pointer;">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+</div>
+
+<div id="galleryOverlay" class="gallery-overlay" aria-hidden="true">
+    <div class="gallery-inner" role="dialog" aria-modal="true">
+        <button class="gallery-close" aria-label="Close" title="Close">&times;</button>
+        <div style="text-align:center;">
+            <img id="gallery-image" src="" alt="Full-size image" />
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %} Admin Login - Sulfur Electric Tattoo {% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-5">
+            <div class="text-center mb-5">
+                <h1 class="display-4 mb-3">Admin Login</h1>
+                <p class="lead">Access admin dashboard</p>
+            </div>
+            <!--Same Post handling as in finance problem set-->
+            <form method="POST" action="{{ url_for('login_admin') }}">
+                <div class="row mb-3">
+                    <div class="col-sm-9 mx-auto">
+                        <input type="text" class="form-control bg-light text-black border-light" name="username" required placeholder="Username">
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-sm-9 mx-auto">
+                        <input type="password" class="form-control bg-light text-black border-light" name="password" required placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-9 mx-auto">
+                        <button type="submit" class="btn btn-outline-light">Login</button>
+                    </div>    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

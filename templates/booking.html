@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block body_class %}booking{% endblock %}
+
+{% block title %}Book a Consultation - Sulfur Electric Tattoo{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-5">
+            <div class="text-center mb-5">
+                <h1 class="display-4 mb-3"><strong>Book a free consultation here</strong></h1>
+                <p class="lead">Let's bring your idea to life and make personal appointment</p>
+            </div>
+
+            <form method="POST" action="{{ url_for('booking') }}" class="needs-validation" novalidate">
+                <div class="row mb-3">
+                    <div class="col-sm-9 mx-auto">
+                        <input type="text" class="form-control bg-light text-black border-light" id="name" name="name" required minlength="2" placeholder="Name">
+                        <div class="invalid-feedback">
+                            Please provide a valid name
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-9 mx-auto">
+                        <input type="email" class="form-control bg-light text-black border-light" id="email" name="email" required placeholder="Email">
+                        <div class="invalid-feedback">
+                            Please provide a valid email address.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-9 mx-auto">
+                        <input type="tel" class="form-control bg-light text-black border-light" id="phone" name="phone" required placeholder="Phone number" minlength="8" maxlength="20">
+                        <div class="invalid-feedback">
+                            Please provide a valid phone number.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-9 mx-auto text-center">
+                        <button type="submit" class="btn btn-outline-light">
+                            Book Consultation
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,260 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* background picture of Manuel */
+.hero-background::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/static/images/Background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+/* Another two background pictures on /contact and /booking */
+body.contact { --page-bg: url('/static/images/contact.JPG'); }
+body.booking { --page-bg: url('/static/images/booking.jpeg'); }
+
+body.contact::before,
+body.booking::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: var(--page-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* black color under background picture to make it darker */
+body.contact, body.booking {
+    background-color: black !important;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+.hero p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    margin-left: 2rem;
+}
+
+.nav-menu a {
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-menu a:hover {
+    background-color: white;
+    color: black;
+}
+
+.logo a {
+    font-size: 3rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: white;
+    font-family: 'Pirata One';
+}
+
+.footer {
+    align-self: flex-end;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+
+.contact-details {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero-background {
+    position: relative;
+}
+
+/* Make card almost transparent with barely visible border */
+body.contact .card.bg-dark {
+    background-color: rgba(0, 0, 0, 0.35) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.contact .card.bg-dark .card-body,
+body.contact .card.bg-dark h5,
+body.contact .card.bg-dark p {
+    color: white;
+}
+
+.portfolio-img {
+    transition: transform 0.3s ease;
+}
+
+/* focus image on hover */
+.portfolio-img:hover {
+    transform: scale(1.07);
+    cursor: pointer;
+}
+
+.admin-card > .card-body {
+    padding: 0 !important;
+}
+
+/* Css to keep the page responsive on the smaller devices */
+/* Base gallery image sizing for large viewports (can be overridden by media queries below) */
+#gallery-image {
+    max-width: 50vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .nav-menu {
+        margin-top: 1rem;
+        display: block !important;
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .nav-menu li {
+        margin-left: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-menu a {
+        display: block;
+        width: 100%;
+        padding: 0.6rem 0.75rem;
+        text-align: center;
+        border-radius: 0.25rem;
+    }
+
+    .logo a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    /* Gallery overlay adjustments for medium viewports */
+    #gallery-image {
+        max-width: 80vw;
+        max-height: 70vh;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo a {
+        font-size: 1.6rem;
+    }
+}
+
+
+@media (max-width: 991.98px) {
+    header.header.sticky-top {
+        position: static !important;
+        top: auto !important;
+    }
+}
+
+
+/* Gallery overlay styles */
+.gallery-overlay {
+    display: none;
+    position: fixed;
+    inset: 0; 
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1000; /* secure z-index for overlay to always be on top */
+    padding: 1rem;
+}
+
+.gallery-inner {
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.gallery-close {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* The base #gallery-image was moved above so media queries can override it correctly. */
+
+
+
+

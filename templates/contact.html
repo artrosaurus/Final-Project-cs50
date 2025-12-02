@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block body_class %}contact{% endblock %}
+
+{% block title %}Contact - Sulfur Electric Tattoo{% endblock %}
+
+{% block content %}
+<div class="container text-center my-5">
+    <h2 class="card-title mb-5 contact-details">Contact details</h2>
+    
+    <div class="row justify-content-center g-4">
+        <!-- Hours Card -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card bg-dark border-light text-center h-100 p-4">
+                <div class="card-body">
+                    <h5 class="text-light mb-3">🕐 Hours</h5>
+                    <p class="text-light fs-6">
+                        Mon-Fri: 12pm - 8pm<br>
+                        Sat: 11am - 6pm<br>
+                        Sun: Closed
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Phone Card -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card bg-dark border-light text-center h-100 p-4">
+                <div class="card-body">
+                    <h5 class="text-light mb-3">📞 Phone</h5>
+                    <p class="fs-5"><a href="tel:+1234567890" class="text-white text-decoration-none">+1 (234) 567-890</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Instagram Card -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card bg-dark border-light text-center h-100 p-4">
+                <div class="card-body">
+                    <h5 class="text-light mb-3"><i class="bi bi-instagram"></i> Instagram</h5>
+                    <p class="fs-6"><a href="https://instagram.com/yourhandle" target="_blank" class="text-white text-decoration-none">@yourhandle</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Email Card -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card bg-dark border-light text-center h-100 p-4">
+                <div class="card-body">
+                    <h5 class="text-light mb-3">✉️ Email</h5>
+                    <p class="fs-5"><a href="mailto:info@sulfurelectric.com" class="text-white text-decoration-none">info@sulfurelectric.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

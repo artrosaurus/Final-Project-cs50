@@ -1,0 +1,9 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+instance/
+*.sqlite3
+tattoo.db
+.DS_Store

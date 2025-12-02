@@ -1,0 +1,56 @@
+<!DOCTYPE html data-bs-theme="dark">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Sulfur Electric Tattoo{% endblock %}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+    </head>
+<body class="{% block body_class %}{% endblock %} bg-black text-white">
+    <header class="header container-fluid sticky-top" style="background: transparent; z-index: 1030;">
+        <div class="logo">
+            <a href="{{ url_for('index') }}" class="navbar-brand">Sulfur Electric Tattoo</a>
+        </div>
+        <nav class="navbar navbar-expand-lg">
+            <ul class="nav-menu navbar-nav d-flex flex-row fs-5">
+                <li class="nav-item"><a href="{{ url_for('portfolio') }}" class="nav-link">My work</a></li>
+                <li class="nav-item"><a href="{{ url_for('booking') }}" class="nav-link">Bookings</a></li>
+                <li class="nav-item"><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <!--adding flash messages here. Learned syntax with AI-->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="position-fixed top-50 start-50 translate-middle" style="z-index: 9999;">
+                    <div class="card bg-dark border-light text-center p-3 shadow-lg" style="min-width: 320px; max-width: 90vw;">
+                        <div class="card-body py-2">
+                            <h5 class="card-title mb-2 text-white">
+                                {{ '❌ Error' if category == 'error' else '✅ Success' }}
+                            </h5>
+                            <p class="card-text mb-2 text-white">{{ message }}</p>
+                            <button type="button" class="btn btn-sm btn-light" onclick="this.closest('.position-fixed').remove()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Sulfur Electric Tattoo. All rights reserved.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

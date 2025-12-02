@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+
+{% block title %}Admin Dashboard - Sulfur Electric Tattoo{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+        <div class="text-center mb-4">
+            <h1 class="display-4 mb-4">Admin Dashboard</h1>
+            <p class="lead">Your Bookings</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="table-responsive">
+                    <table class="table table-light rounded-3 overflow-hidden">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Booking Time</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <!-- Here we will loop through all the customers in the database to display it-->
+                            {% for customer in customers %}
+
+                            <tr>
+                                <td>{{ customer.id }}</td>
+                                <td>{{ customer.name}}</td>
+                                <td>{{ customer.email}}</td>
+                                <td>{{ customer.phone}}</td>
+                                <td>{{ customer.booking_time.strftime('%Y-%m-%d %H:%M') }}</td>
+                                <td>
+                                    <form method="POST" action="{{ url_for('delete_booking', customer_id=customer.id) }}" onsubmit="return confirm('Delete this booking?');">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>   
+                            </tr>
+                            <!-- If there is no logs in database display No bookings-->
+                            {% else %}
+                            
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">
+                                    No booking requests yet
+                                </td>
+                            </tr>
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <div class="text-center mt-4">
+        <a href="{{ url_for('logout')}}" class="btn btn-outline-light">Logout</a>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+            <h2 class="text-center mb-4">Upload Your Image</h2>
+            <form method="POST" action="{{ url_for('upload_image') }}" enctype="multipart/form-data" class="bg-dark p-4 rounded-3">
+                <div class="mb-3">
+                    <label for="image" class="form-label">Choose Image</label>
+                    <input type="file" class="form-control bg-light" id="image" name="image" accept="image/*" multiple required>
+                    
+                    <div class="form-text text-muted">Accepted formats: PNG, JPG, JPEG, GIF</div>
+                </div>
+                <button type="submit" class="btn btn-outline-light">Upload Image</button>
+                
+            </form>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-10">
+            <h2 class="text-center mb-4">Manage Portfolio Images</h2>
+
+            <!-- Bulk-delete form: wraps the image grid and submits selected checkboxes -->
+            {% if portfolio_images %}
+            <form method="POST" action="{{ url_for('delete_images') }}" onsubmit="return confirm('Delete selected images?');">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <span class="small text-muted">Select images to delete</span>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-danger btn-sm">Delete selected</button>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Loop through each image in images list -->
+                {% for image in portfolio_images %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card bg-dark admin-card">
+                        <a href="{{ url_for('static', filename='images/' + image.filename) }}" target="_blank" rel="noopener">
+                        <img src="{{ url_for('static', filename='images/' + image.filename) }}"
+                        class="card-img-top"
+                        alt="Portfolio image"
+                        style="height: 300px; width: 100%; object-fit: cover;">
+                        </a>
+                        <div class="card-body text-center">
+                            <p class="card-text small text-muted">
+                                {{ image.upload_date.strftime('%Y-%m-%d') }}
+                            </p>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="image_ids" value="{{ image.id }}" id="img-{{ image.id }}">
+                                <label class="form-check-label small text-white" for="img-{{ image.id }}">Select</label>
+                            </div>
+                            <button type="submit" name="delete" value="{{ image.id }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this image?');">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            </form>
+            <!-- If portfolio is empty show this message -->
+            {% else %}
+            <p class="text-center text-muted">No portfolio images uploaded yet</p>
+            {% endif %}
+        </div>
+    </div>
+
+        <!-- Image preview modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="modal-image" src="" alt="Full-size image" style="max-width:100%; height:auto;"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+{% endblock %}
