@@ -12,20 +12,20 @@ This project represents exactly how I visualize a tattoo studio website - fast, 
 
 # SCREENSHOTS
 
-| <img src="for_readme/SULFUR ELECTRIC TATTOO 1.jpg" alt="Tattoo 1" width="220" /> | <img src="for_readme/SULFUR ELECTRIC TATOO.jpg" alt="Portfolio sample" width="220" /> | <img src="for_readme/SULFUR ELECTRIC TATTOO 2.jpg" alt="Tattoo 2" width="220" /> |
+| <img src="https://raw.githubusercontent.com/artrosaurus/Final-Project-cs50/readme-assets/for_readme/SULFUR ELECTRIC TATTOO 1.jpg" alt="Tattoo 1" width="220" /> | <img src="https://raw.githubusercontent.com/artrosaurus/Final-Project-cs50/readme-assets/for_readme/SULFUR ELECTRIC TATOO.jpg" alt="Portfolio sample" width="220" /> | <img src="https://raw.githubusercontent.com/artrosaurus/Final-Project-cs50/readme-assets/for_readme/SULFUR ELECTRIC TATTOO 2.jpg" alt="Tattoo 2" width="220" /> |
 |---|---|---|
 
 
-| <img src="for_readme/SULFUR ELECTRIC TATTOO 3.jpg" alt="Tattoo 3" width="220" /> | <img src="for_readme/SULFUR ELECTRIC TATTOO 4.jpg" alt="Tattoo 4" width="220" /> | <img src="for_readme/SULFUR ELECTRIC TATTOO 5 ADMIN PANEL.jpg" alt="Tattoo 5 (admin)" width="220" /> |
+| <img src="https://raw.githubusercontent.com/artrosaurus/Final-Project-cs50/readme-assets/for_readme/SULFUR ELECTRIC TATTOO 3.jpg" alt="Tattoo 3" width="220" /> | <img src="https://raw.githubusercontent.com/artrosaurus/Final-Project-cs50/readme-assets/for_readme/SULFUR ELECTRIC TATTOO 4.jpg" alt="Tattoo 4" width="220" /> | <img src="https://raw.githubusercontent.com/artrosaurus/Final-Project-cs50/readme-assets/for_readme/SULFUR ELECTRIC TATTOO 5 ADMIN PANEL.jpg" alt="Tattoo 5 (admin)" width="220" /> |
 |---|---|---|
 
 
-| <img src="for_readme/SULFUR ELECTRIC TATOO 6 admin panel.jpg" alt="Sulfur Electric Tattoo 6" width="220" /> | <img src="for_readme/SULFUR ELECTRIC TATOO admin.jpg" alt="Admin panel" width="220" /> | <img src="for_readme/SULFUR ELECTRIC TATTOO ADMIN PANEL 7.jpg" alt="Admin panel 7" width="220" /> |
+| <img src="https://raw.githubusercontent.com/artrosaurus/Final-Project-cs50/readme-assets/for_readme/SULFUR ELECTRIC TATOO 6 admin panel.jpg" alt="Sulfur Electric Tattoo 6" width="220" /> | <img src="https://raw.githubusercontent.com/artrosaurus/Final-Project-cs50/readme-assets/for_readme/SULFUR ELECTRIC TATOO admin.jpg" alt="Admin panel" width="220" /> | <img src="https://raw.githubusercontent.com/artrosaurus/Final-Project-cs50/readme-assets/for_readme/SULFUR ELECTRIC TATTOO ADMIN PANEL 7.jpg" alt="Admin panel 7" width="220" /> |
 |---|---|---|
 
 # QUICK START
 
-Prerequisites
+Before you start, make sure you have installed:
 - Git (to clone the repo)
 - Python 3.8+
 
