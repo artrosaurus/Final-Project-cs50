@@ -22,10 +22,8 @@ This project represents exactly how I visualize a tattoo studio website - fast, 
 | <img src="static/images/for%20readme/SULFUR%20ELECTRIC%20TATOO%206%20admin%20panel.jpg" alt="Sulfur Electric Tattoo 6" width="220" /> | <img src="static/images/for%20readme/SULFUR%20ELECTRIC%20TATOO%20admin.jpg" alt="Admin panel" width="220" /> | <img src="static/images/for%20readme/SULFUR%20ELECTRIC%20TATTOO%20ADMIN%20PANEL%207.jpg" alt="Admin panel 7" width="220" /> |
 |---|---|---|
 
-
-    
 # QUICK START
-
+ Make sure, that you have git installed in your machine before you start with process.
 ---
 # FILES
 

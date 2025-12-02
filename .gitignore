@@ -7,3 +7,4 @@ instance/
 *.sqlite3
 tattoo.db
 .DS_Store
+settings.json
