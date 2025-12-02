@@ -23,9 +23,10 @@ This project represents exactly how I visualize a tattoo studio website - fast, 
 |---|---|---|
 
 # QUICK START
- Make sure, that you have git installed in your machine before you start with process.
+ Make sure, that you have git installed in your machine before you start with quick start process.
 ---
 # FILES
+
 
 ---
 # DESIGN CHOICES 
