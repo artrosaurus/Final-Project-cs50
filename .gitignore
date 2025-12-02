@@ -6,6 +6,5 @@ __pycache__/
 instance/
 *.sqlite3
 tattoo.db
-for_readme/
 .DS_Store
 settings.json
