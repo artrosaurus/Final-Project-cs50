@@ -5,6 +5,7 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 from werkzeug.security import check_password_hash
+from sqlalchemy.exc import IntegrityError
 
 load_dotenv() # Load environment variables from .env file
 app = Flask(__name__)
@@ -249,6 +250,54 @@ def logout():
 
 with app.app_context():
     db.create_all()
+    # Automatically register any image files present in static/images folder,
+    # so people who clone repo can see gallery. (this is a real-life project, so when i deploy it,
+    # it will create empty database.)
+    
+    def register_images_from_static_folder():
+        images_directory = os.path.join(app.root_path, 'static', 'images')
+        formats = {'png', 'jpg', 'jpeg', 'gif'}
+
+        if not os.path.isdir(images_directory):
+            return
+
+        new_images_count = 0
+        # Names to ignore (these are background pictures, not gallery images)
+        excluded_filenames = {"background.jpeg", "booking.jpeg", "contact.jpg"}
+
+        for filename in sorted(os.listdir(images_directory)):
+            filepath = os.path.join(images_directory, filename)
+            if not os.path.isfile(filepath):
+                continue
+            
+            name_lower = filename.lower()
+            if '.' not in name_lower:
+                continue
+            
+            extension = name_lower.rsplit('.', 1)[1]
+            if extension not in formats:
+                continue
+
+            # Skip background images
+            if name_lower in excluded_filenames:
+                continue
+
+            # Only add if not already present in DB
+            existing = PortfolioImage.query.filter_by(filename=filename).first()
+            if existing:
+                continue
+
+            try:
+                db.session.add(PortfolioImage(filename=filename))
+                db.session.commit()
+                new_images_count += 1
+            except IntegrityError:
+                db.session.rollback()
+
+        if new_images_count:
+            print(f"Registered {new_images_count} images from static/images into PortfolioImage table")
+
+    register_images_from_static_folder()
 
 if __name__ == '__main__':
     app.run(debug=True) 

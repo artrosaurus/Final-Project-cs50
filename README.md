@@ -1,4 +1,6 @@
 # Sulfur Electric Tattoo
+---
+
 ### VIDEO DEMO: 
 ---
 # DESCRIPTION
@@ -49,7 +51,6 @@ pip install -r requirements.txt
 Windows (PowerShell)
 ```powershell
 python -m venv .venv
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 pip install -r requirements.txt
@@ -104,8 +105,12 @@ Populate bookings:
 - Users can create bookings by filling the "Book a consultation" form on the site (`/booking`). Submitting the form will add a booking to the database.
 
 ---
-# FILES
+
+# SHOWCASE
+**Note:** On startup the application will automatically register image files that are present in the `static/images/` folder into the gallery database (used for showcase). This makes it easy for user to run the app locally and see the portfolio images without first uploading them through the admin panel.
+
 ---
+# FILES
 
 - `app.py` — Flask application and routes
 - `requirements.txt` — Python dependencies
@@ -121,11 +126,25 @@ Populate bookings:
 - `static/` — static assets
 	- `static/css/style.css` — main stylesheet
 	- `static/js/main.js` — small frontend scripts (gallery overlay)
-	- `static/images/` — shipped images used by the site
-		- (several photos and placeholders)
+	- `static/images/` — images used by the site
 
 ---
-# DESIGN CHOICES 
+# DESIGN CHOICES
 
----
+- `Flask` — I chose flask, because it's exactly what i learned in CS50 Finance problem set. Everything stays light and easy to understand.
 
+- `SQLite + Flask-SQLAlchemy` — Since this is just a small project for one artist, I decided to use the same simple SQL style we learned in the course. One SQLite database, no overcomplicating things.  
+Along the way I also picked up Flask-SQLAlchemy and used it in the project because, in my opinion, it keeps the code much cleaner and easier to read.
+
+- `Minimalist design` — The gallery is the most important part, so I went full minimalist: dark theme, almost no text, big images, and a clean navbar gets you straight to the tattoos.
+
+- `Simple admin panel` — Very simple administration panel that includes a few functions:
+	- Booking overview, user can delete bookings, which he already handled.
+	- User can upload new photos for portfolio directly.
+	- He can also delete portfolio images that he no longer wants to show.
+
+- `JavaScript` — Lightweight vanilla scripts for the gallery and admin.
+
+- `Responsiveness` — Mobile-friendly layout with bootstrap CSS, so the app looks good on phones and desktops.
+
+- `Security` — Admin page is protected by password and credentials are stored in ```.env``` file.
